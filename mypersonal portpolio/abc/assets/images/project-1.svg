@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="accentGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="600" height="380" rx="16" fill="url(#bgGrad1)" />
+  <rect x="2" y="2" width="596" height="376" rx="14" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+
+  <!-- Window Frame -->
+  <rect x="40" y="40" width="520" height="300" rx="12" fill="#1e293b" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+  
+  <!-- Window Header Bar -->
+  <rect x="40" y="40" width="520" height="36" rx="12" fill="#0f172a" />
+  <circle cx="65" cy="58" r="6" fill="#ef4444" />
+  <circle cx="85" cy="58" r="6" fill="#f59e0b" />
+  <circle cx="105" cy="58" r="6" fill="#10b981" />
+  <rect x="180" y="48" width="240" height="20" rx="6" fill="#1e293b" />
+  <text x="230" y="62" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">https://abrarahmad.dev</text>
+
+  <!-- Sidebar Mock -->
+  <rect x="60" y="96" width="100" height="224" rx="8" fill="#0f172a" opacity="0.6" />
+  <rect x="75" y="115" width="70" height="10" rx="3" fill="#6366f1" />
+  <rect x="75" y="140" width="55" height="8" rx="3" fill="#475569" />
+  <rect x="75" y="160" width="60" height="8" rx="3" fill="#475569" />
+  <rect x="75" y="180" width="50" height="8" rx="3" fill="#475569" />
+  <rect x="75" y="200" width="65" height="8" rx="3" fill="#475569" />
+
+  <!-- Main Content Mock -->
+  <!-- Hero Banner in preview -->
+  <rect x="180" y="96" width="360" height="100" rx="8" fill="url(#accentGrad1)" opacity="0.9" />
+  <text x="200" y="135" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="bold" font-size="18">Abrar Ahmad</text>
+  <text x="200" y="155" fill="#e0e7ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Software Engineer &amp; Full Stack Developer</text>
+  <rect x="200" y="168" width="80" height="18" rx="4" fill="#ffffff" />
+  <text x="215" y="181" fill="#4338ca" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="bold">View Work</text>
+
+  <!-- Card Grid Mock -->
+  <rect x="180" y="210" width="110" height="110" rx="8" fill="#0f172a" stroke="rgba(255,255,255,0.06)" />
+  <rect x="195" y="225" width="80" height="40" rx="4" fill="#334155" />
+  <rect x="195" y="275" width="60" height="8" rx="2" fill="#94a3b8" />
+  <rect x="195" y="290" width="40" height="6" rx="2" fill="#64748b" />
+
+  <rect x="305" y="210" width="110" height="110" rx="8" fill="#0f172a" stroke="rgba(255,255,255,0.06)" />
+  <rect x="320" y="225" width="80" height="40" rx="4" fill="#334155" />
+  <rect x="320" y="275" width="60" height="8" rx="2" fill="#94a3b8" />
+  <rect x="320" y="290" width="40" height="6" rx="2" fill="#64748b" />
+
+  <rect x="430" y="210" width="110" height="110" rx="8" fill="#0f172a" stroke="rgba(255,255,255,0.06)" />
+  <rect x="445" y="225" width="80" height="40" rx="4" fill="#334155" />
+  <rect x="445" y="275" width="60" height="8" rx="2" fill="#94a3b8" />
+  <rect x="445" y="290" width="40" height="6" rx="2" fill="#64748b" />
+</svg>

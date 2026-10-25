@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard &amp; CMS | Abrar Ahmad</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/profile.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Base & Admin Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css?v=20261025">
+</head>
+<body class="admin-body">
+
+  <!-- ==========================================================================
+       LOGIN VIEW (SHOWN WHEN NOT AUTHENTICATED)
+       ========================================================================== -->
+  <div id="loginView" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-header-icon">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <h2 class="login-title">Owner Admin Portal</h2>
+      <p class="login-subtitle">Sign in to manage and edit your portfolio content</p>
+
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="loginUsername" class="form-label">Username</label>
+          <input type="text" id="loginUsername" class="form-input" placeholder="Username" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword" class="form-label">Password</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="loginSubmitBtn" style="width: 100%; margin-top: 0.5rem;">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span>Sign In to Dashboard</span>
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem;">
+        <a href="index.html" class="owner-login-hint" style="font-size: 0.85rem;">
+          <i class="fa-solid fa-arrow-left"></i> Back to Public Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       AUTHENTICATED ADMIN DASHBOARD
+       ========================================================================== -->
+  <div id="adminApp" class="admin-container" style="display: none;">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <div class="brand-icon" style="width: 28px; height: 28px; font-size: 0.8rem;">&lt;/&gt;</div>
+          <span>Abrar<strong>CMS</strong></span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item-btn active" data-tab="overview">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-item-btn" data-tab="profile">
+          <i class="fa-solid fa-id-card"></i>
+          <span>Profile &amp; Bio</span>
+        </button>
+        <button class="nav-item-btn" data-tab="education">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Education</span>
+        </button>
+        <button class="nav-item-btn" data-tab="skills">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <span>Skills</span>
+        </button>
+        <button class="nav-item-btn" data-tab="experience">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Experience</span>
+        </button>
+        <button class="nav-item-btn" data-tab="projects">
+          <i class="fa-solid fa-diagram-project"></i>
+          <span>Projects</span>
+        </button>
+        <button class="nav-item-btn" data-tab="certificates">
+          <i class="fa-solid fa-award"></i>
+          <span>Certificates</span>
+        </button>
+        <button class="nav-item-btn" data-tab="messages">
+          <i class="fa-solid fa-inbox"></i>
+          <span>Messages</span>
+          <span class="nav-badge-count" id="unreadBadge" style="display: none;">0</span>
+        </button>
+        <button class="nav-item-btn" data-tab="settings">
+          <i class="fa-solid fa-gear"></i>
+          <span>Security &amp; Pass</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="index.html" target="_blank" class="sidebar-btn-exit" title="View live site in new tab">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Live Portfolio</span>
+        </a>
+        <button id="logoutBtn" class="sidebar-btn-exit" style="color: #ef4444;">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Admin Section -->
+    <main class="admin-main">
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="Toggle Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h2 class="topbar-page-title" id="pageTitle">Dashboard Overview</h2>
+        </div>
+
+        <div class="topbar-right">
+          <button id="adminThemeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme" title="Switch Light/Dark Mode">
+            <i class="fa-solid fa-moon" id="adminThemeIcon"></i>
+          </button>
+          <a href="index.html" target="_blank" class="btn btn-outline btn-sm">
+            <i class="fa-solid fa-globe"></i>
+            <span>View Website</span>
+          </a>
+          <div class="user-badge">
+            <div class="user-badge-avatar">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <span id="adminUsernameBadge">admin</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dynamic Content Tabs -->
+      <div class="admin-content">
+
+        <!-- 1. OVERVIEW TAB -->
+        <section id="tab-overview" class="admin-tab-pane active">
+          <div class="overview-stats-grid">
+            <div class="overview-stat-box">
+              <div class="stat-box-icon projects"><i class="fa-solid fa-diagram-project"></i></div>
+              <div class="stat-box-details">
+                <span class="stat-box-value" id="statProjectsCount">0</span>
+                <span class="stat-box-name">Projects</span>
+              </div>
+            </div>
+
+            <div class="overview-stat-box">
+              <div class="stat-box-icon certs"><i class="fa-solid fa-award"></i></div>
+              <div class="stat-box-details">
+                <span class="stat-box-value" id="statCertsCount">0</span>
+                <span class="stat-box-name">Certificates</span>
+              </div>
+            </div>
+
+            <div class="overview-stat-box">
+              <div class="stat-box-icon skills"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+              <div class="stat-box-details">
+                <span class="stat-box-value" id="statSkillsCount">0</span>
+                <span class="stat-box-name">Skills</span>
+              </div>
+            </div>
+
+            <div class="overview-stat-box">
+              <div class="stat-box-icon messages"><i class="fa-solid fa-envelope"></i></div>
+              <div class="stat-box-details">
+                <span class="stat-box-value" id="statMessagesCount">0</span>
+                <span class="stat-box-name">Messages</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Navigation / Info Box -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Welcome to Your Content Management System</h3>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">
+              As the website owner, you have full control over all portfolio content. Any updates you make here are permanently saved to your SQLite database and immediately reflected on your public portfolio.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <button class="btn btn-primary btn-sm" onclick="switchTab('profile')">
+                <i class="fa-solid fa-user-pen"></i> Edit Profile &amp; Bio
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="switchTab('projects'); openNewProjectModal();">
+                <i class="fa-solid fa-plus"></i> Add New Project
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="switchTab('certificates'); openNewCertModal();">
+                <i class="fa-solid fa-plus"></i> Add Certificate
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="switchTab('messages')">
+                <i class="fa-solid fa-inbox"></i> Check Messages
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. PROFILE & BIO TAB -->
+        <section id="tab-profile" class="admin-tab-pane">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa-solid fa-user-gear"></i> Owner Information &amp; Bio</h3>
+              <button type="submit" form="profileForm" class="btn btn-primary" id="saveProfileBtn">
+                <i class="fa-solid fa-floppy-disk"></i> Save Profile Changes
+              </button>
+            </div>
+
+            <form id="profileForm">
+              <!-- Basic Info -->
+              <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label class="form-label" for="profName">Full Name *</label>
+                  <input type="text" id="profName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profTitle">Professional Title *</label>
+                  <input type="text" id="profTitle" class="form-input" required>
+                </div>
+              </div>
+
+              <!-- Profile Avatar & Resume Uploads -->
+              <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label class="form-label">Profile Picture (Upload or URL)</label>
+                  <div class="image-upload-wrapper">
+                    <div class="image-preview-box">
+                      <img src="assets/images/profile.jpg" id="profAvatarPreview" alt="Avatar Preview">
+                    </div>
+                    <div style="flex-grow: 1;">
+                      <label class="upload-btn-label">
+                        <i class="fa-solid fa-upload"></i> Upload Image File
+                        <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
+                      </label>
+                      <input type="text" id="profAvatarUrl" class="form-input" placeholder="Or paste image URL" style="margin-top: 0.5rem; font-size: 0.85rem;">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Resume / CV Document (Upload PDF or URL)</label>
+                  <div style="margin-top: 0.5rem;">
+                    <label class="upload-btn-label">
+                      <i class="fa-solid fa-file-pdf"></i> Upload PDF Resume
+                      <input type="file" id="resumeFileInput" accept=".pdf,.doc,.docx" style="display: none;">
+                    </label>
+                    <input type="text" id="profResumeUrl" class="form-input" placeholder="Or paste resume file path/URL" style="margin-top: 0.5rem; font-size: 0.85rem;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tagline & Bios -->
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label class="form-label" for="profTagline">Hero Tagline / Subtitle</label>
+                <input type="text" id="profTagline" class="form-input">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label class="form-label" for="profBio">Personal Introduction (About Me Bio)</label>
+                <textarea id="profBio" class="form-textarea" rows="4"></textarea>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label class="form-label" for="profSummary">Extended Academic &amp; Career Summary</label>
+                <textarea id="profSummary" class="form-textarea" rows="3"></textarea>
+              </div>
+
+              <!-- Contact & Social Details -->
+              <div class="form-grid-3" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label class="form-label" for="profEmail">Email Address</label>
+                  <input type="email" id="profEmail" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profPhone">WhatsApp / Phone Number</label>
+                  <input type="text" id="profPhone" class="form-input" placeholder="e.g. 03421967521 or +92 342 1967521">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profLocation">Location</label>
+                  <input type="text" id="profLocation" class="form-input">
+                </div>
+              </div>
+
+              <div class="form-grid-3" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label class="form-label" for="profGithub">GitHub Profile URL</label>
+                  <input type="url" id="profGithub" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profLinkedin">LinkedIn Profile URL</label>
+                  <input type="url" id="profLinkedin" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profTwitter">Twitter / X Profile URL</label>
+                  <input type="url" id="profTwitter" class="form-input">
+                </div>
+              </div>
+
+              <!-- Statistics Counters -->
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label class="form-label" for="profYears">Years Experience Display</label>
+                  <input type="text" id="profYears" class="form-input" placeholder="e.g. 2+">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profProjCount">Projects Completed Display</label>
+                  <input type="text" id="profProjCount" class="form-input" placeholder="e.g. 12+">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profSatisfaction">Satisfaction / Code Quality</label>
+                  <input type="text" id="profSatisfaction" class="form-input" placeholder="e.g. 100%">
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- 3. EDUCATION TAB -->
+        <section id="tab-education" class="admin-tab-pane">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa-solid fa-graduation-cap"></i> Education Records</h3>
+              <button class="btn btn-primary btn-sm" onclick="openEduModal()">
+                <i class="fa-solid fa-plus"></i> Add Education
+              </button>
+            </div>
+            <div id="adminEducationList">
+              <!-- Rendered by admin.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. SKILLS TAB -->
+        <section id="tab-skills" class="admin-tab-pane">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa-solid fa-screwdriver-wrench"></i> Skills &amp; Proficiencies</h3>
+              <button class="btn btn-primary btn-sm" onclick="openSkillModal()">
+                <i class="fa-solid fa-plus"></i> Add New Skill
+              </button>
+            </div>
+            <div id="adminSkillsList">
+              <!-- Rendered by admin.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. EXPERIENCE TAB -->
+        <section id="tab-experience" class="admin-tab-pane">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa-solid fa-briefcase"></i> Experience &amp; Internships</h3>
+              <button class="btn btn-primary btn-sm" onclick="openExpModal()">
+                <i class="fa-solid fa-plus"></i> Add Experience
+              </button>
+            </div>
+            <div id="adminExperienceList">
+              <!-- Rendered by admin.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. PROJECTS TAB -->
+        <section id="tab-projects" class="admin-tab-pane">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa-solid fa-diagram-project"></i> Project Portfolio Management</h3>
+              <button class="btn btn-primary btn-sm" onclick="openNewProjectModal()">
+                <i class="fa-solid fa-plus"></i> Add New Project
+              </button>
+            </div>
+            <div id="adminProjectsList">
+              <!-- Rendered by admin.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. CERTIFICATES TAB -->
+        <section id="tab-certificates" class="admin-tab-pane">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa-solid fa-award"></i> Certificates &amp; Credentials</h3>
+              <button class="btn btn-primary btn-sm" onclick="openNewCertModal()">
+                <i class="fa-solid fa-plus"></i> Add Certificate
+              </button>
+            </div>
+            <div id="adminCertificatesList">
+              <!-- Rendered by admin.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. MESSAGES TAB -->
+        <section id="tab-messages" class="admin-tab-pane">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa-solid fa-inbox"></i> Visitor Inquiries &amp; Messages</h3>
+              <button class="btn btn-outline btn-sm" onclick="loadMessages()">
+                <i class="fa-solid fa-rotate-right"></i> Refresh Inbox
+              </button>
+            </div>
+            <div id="adminMessagesList">
+              <!-- Rendered by admin.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. SETTINGS & PASSWORD TAB -->
+        <section id="tab-settings" class="admin-tab-pane">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title"><i class="fa-solid fa-key"></i> Change Admin Password</h3>
+            </div>
+            <form id="changePasswordForm" style="max-width: 500px;">
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="currPass">Current Password *</label>
+                <input type="password" id="currPass" class="form-input" required autocomplete="current-password">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="newPass">New Password * (Min 6 chars)</label>
+                <input type="password" id="newPass" class="form-input" minlength="6" required autocomplete="new-password">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label class="form-label" for="confirmPass">Confirm New Password *</label>
+                <input type="password" id="confirmPass" class="form-input" minlength="6" required autocomplete="new-password">
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-shield-check"></i> Update Password
+              </button>
+            </form>
+          </div>
+
+          <!-- Reset Demo Data Card -->
+          <div class="admin-card" style="border-color: rgba(239, 68, 68, 0.4);">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title" style="color: #ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> Reset Demo Portfolio Content</h3>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+              Need to restore all original sample information for Abrar Ahmad? Clicking below will reset projects, education, skills, and certificates to their initial defaults.
+            </p>
+            <button class="btn btn-outline" style="border-color: #ef4444; color: #ef4444;" onclick="confirmResetDemo()">
+              <i class="fa-solid fa-arrow-rotate-left"></i> Restore Default Content
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       DYNAMIC CRUD MODALS
+       ========================================================================== -->
+
+  <!-- 1. Education Modal -->
+  <div class="modal-backdrop" id="eduModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModal('eduModal')"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="modal-title" id="eduModalTitle" style="margin-bottom: 1.5rem; font-size: 1.3rem;">Add Education Record</h3>
+      <form id="eduForm">
+        <input type="hidden" id="eduId">
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Degree / Certificate Name *</label>
+          <input type="text" id="eduDegree" class="form-input" placeholder="e.g. BS Software Engineering" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Institution / College / School *</label>
+          <input type="text" id="eduInstitution" class="form-input" placeholder="e.g. University Department of CS &amp; SE" required>
+        </div>
+        <div class="form-grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Period / Years *</label>
+            <input type="text" id="eduPeriod" class="form-input" placeholder="e.g. 2023 - Present (In Progress)" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Grade / CGPA</label>
+            <input type="text" id="eduGrade" class="form-input" placeholder="e.g. CGPA 3.8 / 4.0">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label class="form-label">Coursework / Description</label>
+          <textarea id="eduDesc" class="form-textarea" rows="3" placeholder="Key focus areas, subjects, or academic honors"></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('eduModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Education</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Skill Modal -->
+  <div class="modal-backdrop" id="skillModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModal('skillModal')"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="modal-title" id="skillModalTitle" style="margin-bottom: 1.5rem; font-size: 1.3rem;">Add Technical Skill</h3>
+      <form id="skillForm">
+        <input type="hidden" id="skillId">
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Skill Name *</label>
+          <input type="text" id="skillName" class="form-input" placeholder="e.g. Python or C++ or JavaScript" required>
+        </div>
+        <div class="form-grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select id="skillCategory" class="form-input">
+              <option value="frontend">Frontend Web</option>
+              <option value="programming">Programming Languages</option>
+              <option value="database">Database &amp; SQL</option>
+              <option value="tools">Tools &amp; Productivity</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Proficiency (%): <span id="profValDisplay">85%</span></label>
+            <input type="range" id="skillProficiency" min="10" max="100" value="85" class="form-input" oninput="document.getElementById('profValDisplay').textContent = this.value + '%'">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label class="form-label">FontAwesome Icon Class</label>
+          <input type="text" id="skillIcon" class="form-input" placeholder="e.g. fa-brands fa-python or fa-solid fa-code">
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('skillModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Skill</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Experience Modal -->
+  <div class="modal-backdrop" id="expModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModal('expModal')"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="modal-title" id="expModalTitle" style="margin-bottom: 1.5rem; font-size: 1.3rem;">Add Experience</h3>
+      <form id="expForm">
+        <input type="hidden" id="expId">
+        <div class="form-grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Role / Job Title *</label>
+            <input type="text" id="expRole" class="form-input" placeholder="e.g. Junior Web Developer (Intern)" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company / Organization *</label>
+            <input type="text" id="expCompany" class="form-input" placeholder="e.g. Tech Solutions Lab" required>
+          </div>
+        </div>
+        <div class="form-grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Period / Duration *</label>
+            <input type="text" id="expPeriod" class="form-input" placeholder="e.g. Jun 2025 - Aug 2025" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Location</label>
+            <input type="text" id="expLocation" class="form-input" placeholder="e.g. Remote / Lahore, Pakistan">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label class="form-label">Key Contributions &amp; Achievements</label>
+          <textarea id="expDesc" class="form-textarea" rows="3" placeholder="Describe projects engineered, responsibilities handled..."></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('expModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Experience</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Project Modal -->
+  <div class="modal-backdrop" id="projectModal">
+    <div class="modal-content" style="max-width: 750px;">
+      <button class="modal-close-btn" onclick="closeModal('projectModal')"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="modal-title" id="projectModalTitle" style="margin-bottom: 1.5rem; font-size: 1.3rem;">Add New Project</h3>
+      <form id="projectForm">
+        <input type="hidden" id="projectId">
+        
+        <div class="form-grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Project Title *</label>
+            <input type="text" id="projTitle" class="form-input" placeholder="e.g. E-Commerce Product Showcase" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select id="projCategory" class="form-input">
+              <option value="web">Web Development</option>
+              <option value="software">Software &amp; OOP</option>
+              <option value="python">Python &amp; Scripts</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Thumbnail Image (Upload File or Enter URL)</label>
+          <div class="image-upload-wrapper">
+            <div class="image-preview-box" style="width: 120px; height: 80px;">
+              <img src="assets/images/project-1.svg" id="projImgPreview" alt="Project Thumbnail">
+            </div>
+            <div style="flex-grow: 1;">
+              <label class="upload-btn-label">
+                <i class="fa-solid fa-upload"></i> Upload Image
+                <input type="file" id="projFileInput" accept="image/*" style="display: none;">
+              </label>
+              <input type="text" id="projImageUrl" class="form-input" placeholder="Or paste image URL" style="margin-top: 0.5rem; font-size: 0.85rem;">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Description *</label>
+          <textarea id="projDesc" class="form-textarea" rows="3" placeholder="Explain what the project does, key features, architecture..." required></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Technologies Used (Comma-separated)</label>
+          <input type="text" id="projTech" class="form-input" placeholder="e.g. HTML5, CSS3, JavaScript, Python, SQLite">
+        </div>
+
+        <div class="form-grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label class="form-label">GitHub Repository Link</label>
+            <input type="url" id="projGithub" class="form-input" placeholder="https://github.com/abrarahmad/project">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Live Demo Link</label>
+            <input type="url" id="projDemo" class="form-input" placeholder="https://demo.example.com">
+          </div>
+        </div>
+
+        <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select id="projStatus" class="form-input">
+              <option value="Completed">Completed</option>
+              <option value="In Progress">In Progress</option>
+            </select>
+          </div>
+          <div class="form-group" style="display: flex; align-items: center; gap: 0.75rem; padding-top: 1.75rem;">
+            <input type="checkbox" id="projFeatured" style="width: 20px; height: 20px; accent-color: var(--accent-primary);">
+            <label for="projFeatured" style="font-size: 0.92rem; font-weight: 600;">Feature on Portfolio Home</label>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('projectModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Certificate Modal -->
+  <div class="modal-backdrop" id="certModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModal('certModal')"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="modal-title" id="certModalTitle" style="margin-bottom: 1.5rem; font-size: 1.3rem;">Add Certificate</h3>
+      <form id="certForm">
+        <input type="hidden" id="certId">
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Certificate Title *</label>
+          <input type="text" id="certTitle" class="form-input" placeholder="e.g. Responsive Web Design Certification" required>
+        </div>
+
+        <div class="form-grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Issuer Organization *</label>
+            <input type="text" id="certIssuer" class="form-input" placeholder="e.g. freeCodeCamp or Coursera" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Issue Date / Year *</label>
+            <input type="text" id="certDate" class="form-input" placeholder="e.g. 2024" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2" style="margin-bottom: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Credential ID</label>
+            <input type="text" id="certCredId" class="form-input" placeholder="e.g. FCC-WD-892401">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Verification Link</label>
+            <input type="url" id="certCredUrl" class="form-input" placeholder="https://coursera.org/verify/...">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label class="form-label">Certificate Image (Upload or URL)</label>
+          <div class="image-upload-wrapper">
+            <div class="image-preview-box" style="width: 100px; height: 75px;">
+              <img src="assets/images/cert-default.svg" id="certImgPreview" alt="Certificate Preview">
+            </div>
+            <div style="flex-grow: 1;">
+              <label class="upload-btn-label">
+                <i class="fa-solid fa-upload"></i> Upload Certificate Image
+                <input type="file" id="certFileInput" accept="image/*" style="display: none;">
+              </label>
+              <input type="text" id="certImageUrl" class="form-input" placeholder="Or enter image URL" style="margin-top: 0.5rem; font-size: 0.85rem;">
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('certModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Certificate</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="adminToastContainer"></div>
+
+  <!-- Admin JavaScript -->
+  <script src="js/admin.js?v=20261025-2"></script>
+</body>
+</html>

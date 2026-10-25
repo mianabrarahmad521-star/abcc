@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#042f2e" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="380" rx="16" fill="url(#bgGrad2)" />
+  <rect x="2" y="2" width="596" height="376" rx="14" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+
+  <!-- App Window -->
+  <rect x="40" y="40" width="520" height="300" rx="12" fill="#134e4a" opacity="0.4" stroke="rgba(45,212,191,0.2)" stroke-width="1.5" />
+  <rect x="40" y="40" width="520" height="36" rx="12" fill="#042f2e" />
+  <circle cx="65" cy="58" r="6" fill="#ef4444" />
+  <circle cx="85" cy="58" r="6" fill="#f59e0b" />
+  <circle cx="105" cy="58" r="6" fill="#10b981" />
+  <text x="210" y="63" fill="#ccfbf1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold">🎓 Academic Record &amp; Portal System</text>
+
+  <!-- Dashboard Overview Cards -->
+  <rect x="65" y="95" width="145" height="70" rx="8" fill="#115e59" opacity="0.8" />
+  <text x="80" y="120" fill="#99f6e4" font-family="sans-serif" font-size="11">Total Enrolled</text>
+  <text x="80" y="148" fill="#ffffff" font-family="sans-serif" font-size="20" font-weight="bold">1,248 Students</text>
+
+  <rect x="225" y="95" width="145" height="70" rx="8" fill="#115e59" opacity="0.8" />
+  <text x="240" y="120" fill="#99f6e4" font-family="sans-serif" font-size="11">Average GPA</text>
+  <text x="240" y="148" fill="#ffffff" font-family="sans-serif" font-size="20" font-weight="bold">3.62 / 4.00</text>
+
+  <rect x="385" y="95" width="150" height="70" rx="8" fill="#115e59" opacity="0.8" />
+  <text x="400" y="120" fill="#99f6e4" font-family="sans-serif" font-size="11">System Status</text>
+  <text x="400" y="148" fill="#34d399" font-family="sans-serif" font-size="18" font-weight="bold">● Active &amp; Synced</text>
+
+  <!-- Table mock -->
+  <rect x="65" y="180" width="470" height="140" rx="8" fill="#0f172a" opacity="0.8" stroke="rgba(20,184,166,0.2)" />
+  <rect x="65" y="180" width="470" height="30" rx="8" fill="#1e293b" />
+  <text x="80" y="200" fill="#94a3b8" font-family="monospace" font-size="11">ROLL NO | STUDENT NAME | MAJOR | SEMESTER | GPA | STATUS</text>
+  <line x1="65" y1="210" x2="535" y2="210" stroke="rgba(255,255,255,0.1)" />
+  
+  <text x="80" y="235" fill="#f1f5f9" font-family="monospace" font-size="11">SE-2023-01 | Abrar Ahmad | Software Eng | Sem 5 | 3.84 | Dean's Honor</text>
+  <line x1="65" y1="247" x2="535" y2="247" stroke="rgba(255,255,255,0.06)" />
+
+  <text x="80" y="270" fill="#f1f5f9" font-family="monospace" font-size="11">SE-2023-02 | Sarah Khan | Software Eng | Sem 5 | 3.78 | Excellent</text>
+  <line x1="65" y1="282" x2="535" y2="282" stroke="rgba(255,255,255,0.06)" />
+
+  <text x="80" y="305" fill="#f1f5f9" font-family="monospace" font-size="11">CS-2023-14 | Hamza Ali  | Computer Sci | Sem 5 | 3.65 | Very Good</text>
+</svg>

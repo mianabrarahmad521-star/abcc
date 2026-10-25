@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abrar Ahmad | Software Engineering Student &amp; Web Developer</title>
+  <meta name="description" content="Personal portfolio and software showcase of Abrar Ahmad - Software Engineering Student and Modern Web Developer.">
+  <meta name="keywords" content="Abrar Ahmad, Software Engineer, Web Developer, Portfolio, Python, C++, Java, JavaScript, HTML, CSS">
+  <meta name="author" content="Abrar Ahmad">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/profile.jpg">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="#home" class="brand-logo" aria-label="Abrar Ahmad Home">
+        <div class="brand-icon">&lt;/&gt;</div>
+        <div class="brand-name">abrar<span>.dev</span></div>
+      </a>
+
+      <!-- Desktop & Mobile Navigation Links -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#certificates" class="nav-link">Certificates</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Action items: Dark/Light Mode Toggle & Admin Link -->
+      <div class="nav-actions">
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme" title="Switch Light/Dark Mode">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+        <a href="admin.html" class="admin-nav-link" title="Owner Admin Portal">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Admin</span>
+        </a>
+        <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Open Mobile Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section" id="home">
+    <div class="hero-glow-bg"></div>
+    <div class="hero-glow-bg-2"></div>
+
+    <div class="container hero-grid">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <div class="hero-badge" id="heroBadge">
+          <span class="status-dot"></span>
+          <span id="availabilityText">Available for Projects &amp; Internships</span>
+        </div>
+
+        <h1 class="hero-title">
+          Hi, I'm <span class="gradient-text" id="heroName">Abrar Ahmad</span>
+        </h1>
+
+        <div class="hero-subtitle-container">
+          <span>I am a</span>
+          <span class="typed-text" id="typedRole">Software Engineering Student</span>
+        </div>
+
+        <p class="hero-description" id="heroTagline">
+          Bridging computational thinking with modern web design to build fast, scalable, and intuitive digital experiences.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>View My Projects</span>
+          </a>
+          <a href="assets/docs/Abrar_Ahmad_Resume.pdf" id="resumeDownloadBtn" class="btn btn-secondary" download="Abrar_Ahmad_Resume.pdf">
+            <i class="fa-solid fa-file-arrow-down"></i>
+            <span>Download Resume</span>
+          </a>
+          <a href="https://wa.me/923421967521" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="border-color: #25D366; color: #25D366;">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contact Me</span>
+          </a>
+        </div>
+
+        <!-- Hero Stats -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" id="statExp">2+</span>
+            <span class="stat-label">Years Learning</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="statProjects">12+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="statClients">100%</span>
+            <span class="stat-label">Code Quality</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual Profile Frame -->
+      <div class="hero-visual">
+        <div class="hero-image-wrapper">
+          <div class="hero-avatar-glow"></div>
+          <img src="assets/images/profile.jpg" alt="Abrar Ahmad" class="hero-avatar-img" id="heroAvatarImg">
+
+          <!-- Floating Badges -->
+          <div class="floating-badge badge-1">
+            <div class="badge-icon-box edu">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="badge-info">
+              <span class="badge-title">BS Software Eng</span>
+              <span class="badge-sub">In Progress</span>
+            </div>
+          </div>
+
+          <div class="floating-badge badge-2">
+            <div class="badge-icon-box code">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <div class="badge-info">
+              <span class="badge-title">Web Developer</span>
+              <span class="badge-sub">Modern Full-Stack</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABOUT ME SECTION
+       ========================================================================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-user"></i> About Me</div>
+        <h2 class="section-title">Passionate About Engineering <span class="gradient-text">Impactful Software</span></h2>
+        <p class="section-subtitle">Get to know more about my background, mindset, and what fuels my passion for computer science and web development.</p>
+      </div>
+
+      <div class="about-grid">
+        <!-- Biography Card -->
+        <div class="about-card">
+          <h3 class="about-lead" id="aboutTitleLead">Hello, I'm Abrar Ahmad — a Software Engineering student driven by curiosity and clean design.</h3>
+          <p class="about-text" id="aboutBio">
+            Hello! I am Abrar Ahmad, a dedicated Software Engineering student and passionate Web Developer. I have a strong foundation in core computer science disciplines, data structures, algorithms, and full-stack web technologies. I love transforming intricate problems into clean, well-architected software with pleasant user interfaces.
+          </p>
+          <p class="about-text" id="aboutSummary">
+            I am actively pursuing my BS in Software Engineering with an unwavering commitment to learning modern frameworks, software engineering best practices, and clean code principles. I am eager to collaborate on challenging projects, contribute to impactful products, and build a flourishing career in software development.
+          </p>
+
+          <div class="about-info-list">
+            <div class="info-item">
+              <span class="info-label">Degree</span>
+              <span class="info-value">BS Software Engineering</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Email</span>
+              <a href="mailto:mianabrarahmad521@gmail.com" class="info-value" id="aboutEmail">mianabrarahmad521@gmail.com</a>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Location</span>
+              <span class="info-value" id="aboutLocation">Pakistan</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Freelance &amp; Work</span>
+              <span class="info-value" style="color:#10b981;">Available</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Core Competency Highlights -->
+        <div class="about-highlights-grid">
+          <div class="highlight-box">
+            <div class="highlight-icon">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h4 class="highlight-title">Full-Stack Web Dev</h4>
+            <p class="highlight-desc">Crafting responsive, dynamic, and accessible web experiences using modern HTML5, CSS3, JavaScript, and backend APIs.</p>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-icon">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <h4 class="highlight-title">Algorithmic Problem Solving</h4>
+            <p class="highlight-desc">Strong grasp of Data Structures and Object-Oriented Programming (OOP) in C++, Java, and Python.</p>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-icon">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <h4 class="highlight-title">Database &amp; Architecture</h4>
+            <p class="highlight-desc">Designing efficient relational database schemas with SQLite &amp; SQL, ensuring data integrity and fast queries.</p>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-icon">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h4 class="highlight-title">Agile &amp; Rapid Learner</h4>
+            <p class="highlight-desc">Fast adaptability to new tech stacks, tools, and version control workflows with Git and GitHub.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SKILLS SECTION
+       ========================================================================== -->
+  <section class="section" id="skills" style="background-color: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-screwdriver-wrench"></i> Technical Stack</div>
+        <h2 class="section-title">My Skills &amp; <span class="gradient-text">Proficiencies</span></h2>
+        <p class="section-subtitle">A curated view of programming languages, web technologies, and productivity tools I actively use.</p>
+      </div>
+
+      <!-- Skills Category Filter Buttons -->
+      <div class="skills-filter-wrapper">
+        <button class="filter-btn active" data-filter="all">All Skills</button>
+        <button class="filter-btn" data-filter="frontend">Frontend Web</button>
+        <button class="filter-btn" data-filter="programming">Programming Languages</button>
+        <button class="filter-btn" data-filter="database">Databases</button>
+        <button class="filter-btn" data-filter="tools">Tools &amp; Office</button>
+      </div>
+
+      <!-- Skills Cards Grid -->
+      <div class="skills-grid" id="skillsGrid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EDUCATION & EXPERIENCE SECTION
+       ========================================================================== -->
+  <section class="section" id="education">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-route"></i> Career Pathway</div>
+        <h2 class="section-title">Education &amp; <span class="gradient-text">Experience</span></h2>
+        <p class="section-subtitle">Academic foundations and professional experience driving my software engineering journey.</p>
+      </div>
+
+      <div class="timeline-dual-grid">
+        <!-- Education Timeline Column -->
+        <div class="timeline-column">
+          <h3 class="timeline-column-title">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Education</span>
+          </h3>
+          <div class="timeline-list" id="educationTimeline">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </div>
+
+        <!-- Experience Timeline Column -->
+        <div class="timeline-column" id="experience">
+          <h3 class="timeline-column-title">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Experience</span>
+          </h3>
+          <div class="timeline-list" id="experienceTimeline">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PROJECTS SECTION
+       ========================================================================== -->
+  <section class="section" id="projects" style="background-color: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-folder-open"></i> Portfolio Showcase</div>
+        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+        <p class="section-subtitle">Explore selected projects demonstrating my web development, software engineering, and problem-solving skills.</p>
+      </div>
+
+      <!-- Project Category Filters -->
+      <div class="skills-filter-wrapper">
+        <button class="filter-btn active" data-project-filter="all">All Projects</button>
+        <button class="filter-btn" data-project-filter="web">Web Development</button>
+        <button class="filter-btn" data-project-filter="software">Software &amp; OOP</button>
+        <button class="filter-btn" data-project-filter="python">Python &amp; Scripts</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CERTIFICATES SECTION
+       ========================================================================== -->
+  <section class="section" id="certificates">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-award"></i> Verified Credentials</div>
+        <h2 class="section-title">Certificates &amp; <span class="gradient-text">Achievements</span></h2>
+        <p class="section-subtitle">Formal recognitions and course certifications earned to validate my continuous learning.</p>
+      </div>
+
+      <!-- Certificates Grid -->
+      <div class="certificates-grid" id="certificatesGrid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT SECTION
+       ========================================================================== -->
+  <section class="section" id="contact" style="background-color: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-paper-plane"></i> Get In Touch</div>
+        <h2 class="section-title">Let's Connect &amp; <span class="gradient-text">Collaborate</span></h2>
+        <p class="section-subtitle">Feel free to reach out for project opportunities, internships, academic inquiries, or just a friendly conversation.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Left: Contact Details Card -->
+        <div class="contact-info-card">
+          <div class="contact-info-header">
+            <h3>Direct Contact Channels</h3>
+            <p>I actively monitor my inbox and strive to reply within 24 hours. Connect with me directly or use the message form.</p>
+          </div>
+
+          <div class="contact-methods">
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-method-detail">
+                <span class="contact-method-label">Email Address</span>
+                <a href="mailto:mianabrarahmad521@gmail.com" class="contact-method-val" id="contactEmail">mianabrarahmad521@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box" style="background: rgba(37, 211, 102, 0.15); color: #25D366;">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div class="contact-method-detail">
+                <span class="contact-method-label">WhatsApp &amp; Phone</span>
+                <a href="https://wa.me/923421967521" target="_blank" rel="noopener noreferrer" class="contact-method-val" id="contactPhone" style="color: #25D366; display: inline-flex; align-items: center; gap: 0.4rem;">
+                  <span>03421967521</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="contact-icon-box">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-method-detail">
+                <span class="contact-method-label">Location</span>
+                <span class="contact-method-val" id="contactLocation">Islamabad / Lahore, Pakistan</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Media Profiles -->
+          <div>
+            <span class="contact-method-label">Social &amp; Developer Profiles</span>
+            <div class="social-links-bar">
+              <a href="https://wa.me/923421967521" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp-btn" id="contactWhatsapp" title="Chat on WhatsApp" style="color: #25D366;">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a href="https://github.com/abrarahmad" target="_blank" rel="noopener noreferrer" class="social-btn" id="contactGithub" title="GitHub Profile">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://linkedin.com/in/abrar-ahmad" target="_blank" rel="noopener noreferrer" class="social-btn" id="contactLinkedin" title="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://twitter.com/abrarahmad_dev" target="_blank" rel="noopener noreferrer" class="social-btn" id="contactTwitter" title="Twitter Profile">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Contact Form -->
+        <div class="contact-form-card">
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <label for="contactName" class="form-label">Your Name *</label>
+              <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. John Doe" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSenderEmail" class="form-label">Your Email Address *</label>
+              <input type="email" id="contactSenderEmail" name="email" class="form-input" placeholder="e.g. john@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject" class="form-label">Subject</label>
+              <input type="text" id="contactSubject" name="subject" class="form-input" placeholder="e.g. Internship Inquiry / Web Project">
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">Message *</label>
+              <textarea id="contactMessage" name="message" class="form-textarea" placeholder="Write your message or inquiry here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="sendMessageBtn">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="brand-logo">
+            <div class="brand-icon">&lt;/&gt;</div>
+            <div class="brand-name">Abrar<span>.dev</span></div>
+          </a>
+          <p>Software Engineering student and Web Developer dedicated to writing clean, maintainable code and engineering high-impact user experiences.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="#home" class="footer-link">Home</a>
+            <a href="#about" class="footer-link">About Me</a>
+            <a href="#skills" class="footer-link">Technical Skills</a>
+            <a href="#projects" class="footer-link">Projects Gallery</a>
+            <a href="#certificates" class="footer-link">Certificates</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Get In Touch</h4>
+          <div class="footer-links">
+            <a href="mailto:mianabrarahmad521@gmail.com" class="footer-link" id="footerEmail">mianabrarahmad521@gmail.com</a>
+            <a href="https://wa.me/923421967521" target="_blank" rel="noopener noreferrer" class="footer-link" style="color:#25D366;"><i class="fa-brands fa-whatsapp"></i> WhatsApp: 03421967521</a>
+            <a href="#contact" class="footer-link">Send a Direct Message</a>
+            <a href="assets/docs/Abrar_Ahmad_Resume.pdf" class="footer-link" download>Download Resume (PDF)</a>
+            <a href="admin.html" class="footer-link" style="color:var(--accent-primary);"><i class="fa-solid fa-lock"></i> Owner Admin Portal</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; <span id="currentYear">2026</span> <strong>Abrar Ahmad</strong>. All rights reserved.
+        </div>
+        <div>
+          <a href="admin.html" class="owner-login-hint">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Website Owner Login</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       IMAGE & CERTIFICATE PREVIEW MODAL
+       ========================================================================== -->
+  <div class="modal-backdrop" id="imageModalBackdrop">
+    <div class="modal-content" style="max-width: 800px; text-align: center;">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h3 id="modalTitle" style="margin-bottom: 1rem; font-size: 1.3rem;">Certificate Preview</h3>
+      <div style="border-radius: var(--radius-md); overflow: hidden; background: var(--bg-secondary); margin-bottom: 1.5rem;">
+        <img src="" id="modalImg" alt="Preview" style="max-height: 500px; width: auto; margin: 0 auto;">
+      </div>
+      <p id="modalSub" style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;"></p>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="modalLinkBtn">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <span>Verify / Open Link</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>
